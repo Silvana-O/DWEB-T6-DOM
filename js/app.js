@@ -190,17 +190,17 @@ function mostrarProductos(listaProductos) {
 
                         <p class="card-text">
                             Categoría:
-                            ${/* COMPLETAR */}
+                            ${producto.categoria}
                         </p>
 
                         <p class="card-text">
                             Precio: $
-                            ${/* COMPLETAR */}
+                            ${producto.precio}
                         </p>
 
                         <p class="card-text">
                             Stock:
-                            ${/* COMPLETAR */}
+                            ${producto.stock}
                         </p>
 
                     </div>
@@ -249,7 +249,7 @@ function mostrarDisponibles() {
         // Esta expresión debe ser verdadera cuando
         // el producto tenga stock mayor que cero.
 
-        return /* COMPLETAR */;
+        return producto.stock >0;
 
     });
 
@@ -291,7 +291,11 @@ function mostrarNotebooks() {
     // PASO 1:
     // Crear un nuevo array utilizando filter().
 
-    const notebooks = /* COMPLETAR */;
+    const notebooks = productos.filter(producto => {
+
+        return producto.categoria === "Notebook";
+        
+    });
 
 
     // PASO 2:
@@ -332,13 +336,12 @@ function mostrarCuatroProductos() {
     // PASO 1:
     // Obtener los primeros cuatro productos.
 
-    const primerosCuatro = /* COMPLETAR */;
-
+    const primerosCuatro = productos.slice(0, 4);
 
     // PASO 2:
     // Mostrar los productos obtenidos.
 
-    /* COMPLETAR */
+    mostrarProductos(primerosCuatro);
 
 }
 
@@ -415,20 +418,26 @@ function buscarProductos() {
     // Obtener lo que escribió el usuario
     // y convertirlo a minúsculas.
 
-    const textoBuscado = /* COMPLETAR */;
+    const textoBuscado = buscador.value.toLowerCase();
 
 
     // PASO 2:
     // Obtener únicamente aquellos productos
     // cuyo nombre contenga el texto buscado.
 
-    const resultados = /* COMPLETAR */;
+    const resultados = productos.filter(producto => {
 
 
     // PASO 3:
     // Mostrar los resultados obtenidos.
 
-    /* COMPLETAR */
+    return producto.nombre
+        .toLowerCase()
+        .includes(textoBuscado);
+
+    });
+
+    mostrarProductos(resultados);
 
 }
 
